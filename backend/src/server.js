@@ -1,9 +1,17 @@
-// İlk satır: .env dosyasını okur, PORT gibi değerler process.env'e gelir
+// İlk satır: .env dosyasını okur, PORT ve MONGODB_URI process.env'e gelir
 import "dotenv/config";
 import app from "./app.js";
+import { connectDatabase } from "./config/database.js";
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`API: http://localhost:${PORT}`);
-});
+// Önce veritabanı, sonra sunucu
+try {
+  await connectDatabase();
+  app.listen(PORT, () => {
+    console.log(`API: http://localhost:${PORT}`);
+  });
+} catch (err) {
+  console.error(`Bağlanılamadı: ${err.message}`);
+  process.exit(1);
+}
