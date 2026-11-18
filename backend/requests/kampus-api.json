@@ -2,7 +2,7 @@
   "info": {
     "_postman_id": "ea256cbe-5048-4dcf-a04d-a9dac4e248dc",
     "name": "Kampüs API",
-    "description": "Sprint 7 · 6 istek. Önce backend klasöründe npm run dev.",
+    "description": "Sprint 8 · 6 istek. Önce backend klasöründe npm run seed, sonra npm run dev. 2. istek listedeki ilk etkinliğin _id değerini eventId değişkenine kaydeder; 3. istek onu kullanır.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -42,7 +42,21 @@
           ]
         }
       },
-      "response": []
+      "response": [],
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const list = pm.response.json();",
+              "if (Array.isArray(list) && list.length > 0) {",
+              "  pm.collectionVariables.set(\"eventId\", list[0]._id);",
+              "}"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "3 Tek etkinlik",
@@ -50,7 +64,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/events/event-2",
+          "raw": "http://localhost:3000/events/{{eventId}}",
           "protocol": "http",
           "host": [
             "localhost"
@@ -58,7 +72,7 @@
           "port": "3000",
           "path": [
             "events",
-            "event-2"
+            "{{eventId}}"
           ]
         }
       },
@@ -149,6 +163,12 @@
         }
       },
       "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "eventId",
+      "value": ""
     }
   ]
 }
