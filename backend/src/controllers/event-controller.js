@@ -29,7 +29,16 @@ export async function getEventById(req, res, next) {
   }
 }
 
-// POST /events (Sprint 7 hâli, bir sonraki adımda modele geçecek)
-export async function createEvent(req, res) {
-  res.status(501).json({ error: { message: "Not implemented" } });
+// POST /events
+export async function createEvent(req, res, next) {
+  try {
+    // Doğrulamayı schema yapar (required, enum, minlength...)
+    const event = await Event.create(req.body ?? {});
+    res.status(201).json(event);
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      return res.status(400).json({ error: { message: err.message } });
+    }
+    next(err);
+  }
 }
