@@ -1,8 +1,7 @@
-// Bellek içi veri: sunucu yeniden başlayınca POST ile eklenenler kaybolur.
-// Sprint 8'de MongoDB'ye taşınacak.
-export const events = [
+// Örnek veri: npm run seed bu 6 etkinliği veritabanına yazar.
+// id alanı yok: MongoDB her kayda kendi _id'sini verir.
+export const seedEvents = [
   {
-    id: "event-1",
     title: "Mezun Buluşması: Sektörden Notlar",
     category: "Seminer",
     capacity: 150,
@@ -12,7 +11,6 @@ export const events = [
     description: "Yazılım sektöründe çalışan mezunlarımız ilk iş deneyimlerini ve staj tavsiyelerini anlatıyor.",
   },
   {
-    id: "event-2",
     title: "Raspberry Pi ile Akıllı Sera",
     category: "Atölye",
     capacity: 24,
@@ -22,7 +20,6 @@ export const events = [
     description: "Sıcaklık ve nem sensörleriyle küçük bir sera modelini otomatik sulamaya bağlıyoruz.",
   },
   {
-    id: "event-3",
     title: "Kimlik Avı Saldırılarını Tanımak",
     category: "Söyleşi",
     capacity: 90,
@@ -32,7 +29,6 @@ export const events = [
     description: "Sahte e-posta ve sitelerin nasıl ayırt edileceğini gerçek örnekler üzerinden konuşuyoruz.",
   },
   {
-    id: "event-4",
     title: "Üretken Yapay Zekâ ve Telif Hakkı",
     category: "Seminer",
     capacity: 110,
@@ -42,7 +38,6 @@ export const events = [
     description: "Yapay zekâ ile üretilen görsel ve metinlerin kime ait olduğu sorusunu hukukçularla tartışıyoruz.",
   },
   {
-    id: "event-5",
     title: "Figma'dan Koda: Arayüz Atölyesi",
     category: "Atölye",
     capacity: 30,
@@ -52,7 +47,6 @@ export const events = [
     description: "Figma'da tasarlanan bir giriş ekranını HTML ve CSS ile adım adım koda döküyoruz.",
   },
   {
-    id: "event-6",
     title: "48 Saatte Mobil Uygulama Yarışması",
     category: "Yarışma",
     capacity: 60,
