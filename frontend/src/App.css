@@ -173,7 +173,7 @@ pre {
   margin-bottom: var(--bosluk-s);
 }
 .filtre label { margin-top: 0; }
-#sonuc, .sonuc { font-weight: bold; }
+#sonuc { font-weight: bold; }
 
 /* Link görünümlü buton (detaydaki "Bu etkinliği güncelle") */
 .buton {
@@ -247,10 +247,39 @@ footer { text-align: center; padding: var(--bosluk-m); font-size: 0.9rem; }
   border-radius: var(--kose);
 }
 
-/* ---------- Sprint 5: menü artık header'ın dışında (ayrı bileşen), görünüm aynı kalsın ---------- */
-.site-baslik { padding-bottom: 0; }
-.site-baslik h1 { margin-bottom: 0; }
-.site-baslik + nav {
-  background: var(--renk-ana);
-  padding: var(--bosluk-s) var(--bosluk-m) var(--bosluk-m);
+/* ---------- Sprint 6: menü, başlıklar, mesajlar ---------- */
+header { padding-bottom: var(--bosluk-s); }
+header p { margin: 0; font-size: 0.95rem; opacity: 0.9; }
+.menu { background: var(--renk-ana); padding: 0 var(--bosluk-m) var(--bosluk-s); }
+.menu a[aria-current="page"] { background: var(--renk-beyaz); color: var(--renk-ana); text-decoration: none; font-weight: bold; }
+.bolum-baslik { font-size: 1.4rem; margin: var(--bosluk-s) 0 var(--bosluk-m); }
+.hata-metni { color: var(--renk-hata); font-size: 0.9rem; min-height: 1.2em; }
+.mesaj { border: 1px solid; border-radius: var(--kose); padding: var(--bosluk-m); max-width: 600px; }
+.mesaj-basari { border-color: var(--renk-basari); background: var(--renk-basari-zemin); color: var(--renk-basari); }
+.alt-linkler { display: flex; flex-wrap: wrap; gap: var(--bosluk-m); }
+.alt-linkler a { display: inline-block; min-height: 44px; padding-top: 10px; }
+
+/* ---------- Sprint 6: yönetim tablosu ---------- */
+.tablo { width: 100%; border-collapse: collapse; background: var(--renk-beyaz); }
+.tablo th { background: var(--renk-ana); color: var(--renk-beyaz); text-align: left; }
+.tablo th, .tablo td { padding: var(--bosluk-s); border-bottom: 1px solid var(--renk-kenar); }
+.islemler { display: flex; flex-wrap: wrap; gap: var(--bosluk-s); }
+.islemler .buton { margin: 0; padding: 10px var(--bosluk-m); border: 0; cursor: pointer; }
+.buton-sil { background: var(--renk-hata); }
+
+/* Telefonda tablo yerine kart: her satır bir kutu */
+@media (max-width: 699px) {
+  .tablo { background: none; }
+  .tablo thead { display: none; }
+  .tablo tr {
+    display: block;
+    background: var(--renk-beyaz);
+    border: 1px solid var(--renk-kenar);
+    border-radius: var(--kose);
+    padding: var(--bosluk-s);
+    margin-bottom: var(--bosluk-m);
+  }
+  .tablo td { display: block; border: 0; padding: 4px var(--bosluk-s); }
+  .tablo td.islemler { display: flex; }
+  .tablo td[data-baslik]::before { content: attr(data-baslik) ": "; font-weight: 700; }
 }

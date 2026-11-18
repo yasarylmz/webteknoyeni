@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer>
-      <p>Kampüs Etkinlikleri · Web Teknolojileri</p>
+      <p>Mustafa Yaşar Yılmaz · 2211012729 · 2026</p>
     </footer>
   );
 }

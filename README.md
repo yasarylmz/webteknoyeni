@@ -1,4 +1,6 @@
-https://webteknoyeni.vercel.app
+https://mustafayasaryilmaz-frontend.vercel.app
+
+(Aynı site: https://webteknoyeni.vercel.app)
 
 # Kampüs Etkinlikleri · Web Teknolojileri
 
@@ -11,8 +13,36 @@ Mustafa Yaşar Yılmaz · 2211012729
 | 3 | `sprint3/` | JavaScript ve DOM: veriden üretilen kartlar, arama/filtre, `?id=` ile detay, form doğrulama |
 | 4 | `frontend/` | Vite + TypeScript + React: 5 sayfa tek `App.tsx` içinde, sayfa geçişi `useState` ile |
 | 5 | `frontend/` | React bileşenleri: `App.tsx` 9 bileşene bölündü, veri props ile iner, olaylar callback ile çıkar |
+| 6 + Vize | `frontend/` | React Router (10 adres), EventsContext, yönetim paneli (ekle/güncelle/sil), giriş, kayıt, şifremi unuttum |
 
-Canlı adres `frontend/` klasörünün son hâlini (şu an Sprint 5) gösterir. Çalıştırmak için: `cd frontend`, `npm install`, `npm run dev`.
+Canlı adres `frontend/` klasörünün son hâlini (şu an Sprint 6 + Vize) gösterir.
+
+## Kurulum
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+Tarayıcıda `http://localhost:5173` açılır.
+
+## Route listesi
+
+| Adres | Sayfa | Ne yapar |
+|---|---|---|
+| `/` | HomePage | Yaklaşan 2 etkinlik |
+| `/events` | EventsPage | Tüm etkinlikler, arama ve kategori filtresi |
+| `/events/:id` | EventDetailPage | Tek etkinliğin detayı (ör. `/events/event-2`) |
+| `/login` | LoginPage | Giriş formu (doğrulama, demo) |
+| `/register` | RegisterPage | Kayıt formu (doğrulama, demo) |
+| `/forgot-password` | ForgotPasswordPage | Şifremi unuttum (demo) |
+| `/admin` | AdminPage | Etkinlik tablosu: Düzenle, Sil, Yeni etkinlik |
+| `/admin/new` | AddEventPage | Yeni etkinlik formu |
+| `/admin/:id/edit` | EditEventPage | Etkinlik güncelleme formu |
+| `*` | NotFoundPage | "Sayfa bulunamadı" |
+
+Veri tarayıcının hafızasında tutulur; sayfa yenilenince 6 örnek etkinliğe döner (backend sonraki sprintlerde).
 
 ## Sprint 4 · frontend klasöründeki dosyalar
 
@@ -45,5 +75,15 @@ Canlı adres `frontend/` klasörünün son hâlini (şu an Sprint 5) gösterir. 
 | `src/components/events/EventFilter.tsx` | Arama kutusu ve kategori seçimi; değerler App'teki state'ten gelir. |
 | `src/components/events/EventDetail.tsx` | Seçili etkinliğin afişi, künyesi ve iki butonu (`onBack`, `onEdit`). |
 | `src/components/forms/EventForm.tsx` | Ekle/Güncelle formu; gönderilince `onSubmit` ile App'e haber verir. |
-| `src/types/page.ts` | Sayfa adlarının tipi (`PageName`). |
 | `src/utils/format-date.ts` | "2026-10-12" tarihini "12 Ekim 2026" yapar. |
+
+Sprint 6'da `src/types/page.ts` silindi (sayfayı artık adres belirliyor) ve Header ile Navigation'ın props'ları kaldırıldı.
+
+## Sprint 6 · yeni dosyalar
+
+| Dosya | Görevi |
+|---|---|
+| `src/context/EventsContext.tsx` | Etkinlik listesi ve `addEvent`, `updateEvent`, `deleteEvent`; `useEvents()` ile her sayfa okur. |
+| `src/pages/*.tsx` | 10 sayfa bileşeni; her biri bir adrese bağlı. |
+| `src/utils/validate-event.ts` | Etkinlik formunun kuralları; hata nesnesi döndüren saf fonksiyon. |
+| `vercel.json` | Vercel'de `/events/event-2` gibi adresler yenilenince de `index.html` açılsın diye yönlendirme. |

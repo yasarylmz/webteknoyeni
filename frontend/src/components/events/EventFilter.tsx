@@ -1,15 +1,15 @@
 import type { Category } from "../../types/campus-event";
 
-interface EventFilterProps {
+interface Props {
   searchText: string;
-  category: Category | "";
-  categories: Category[];
   onSearchChange: (text: string) => void;
+  category: Category | "";
   onCategoryChange: (category: Category | "") => void;
+  categories: Category[];
 }
 
-// State App'te; kutular burada. Değişince yukarı bildirir (lifting state).
-function EventFilter({ searchText, category, categories, onSearchChange, onCategoryChange }: EventFilterProps) {
+// Sadece çizer; state EventsPage'de durur
+function EventFilter({ searchText, onSearchChange, category, onCategoryChange, categories }: Props) {
   return (
     <form className="filtre" role="search" onSubmit={(e) => e.preventDefault()}>
       <div>

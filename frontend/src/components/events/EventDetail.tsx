@@ -1,14 +1,13 @@
+import { Link } from "react-router-dom";
 import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
 
-interface EventDetailProps {
+interface Props {
   event: CampusEvent;
-  onBack: () => void;
-  onEdit: (id: string) => void;
 }
 
-// Etkinliği bulmak App'in işi; bu bileşen önüne konanı çizer
-function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
+// Tabak: önüne konan etkinliği çizer, nereden geldiğini bilmez
+function EventDetail({ event }: Props) {
   return (
     <article className="detay">
       {event.image && (
@@ -34,28 +33,14 @@ function EventDetail({ event, onBack, onEdit }: EventDetailProps) {
         </dl>
         <p>{event.description}</p>
         <p>
-          <a
-            className="buton"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              onEdit(event.id);
-            }}
-          >
+          <Link className="buton" to={`/admin/${event.id}/edit`}>
             Bu etkinliği güncelle
-          </a>
+          </Link>
         </p>
         <p>
-          <a
-            className="tumu"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              onBack();
-            }}
-          >
+          <Link className="tumu" to="/events">
             ← Listeye dön
-          </a>
+          </Link>
         </p>
       </div>
     </article>

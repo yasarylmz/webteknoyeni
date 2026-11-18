@@ -1,13 +1,12 @@
+import { Link } from "react-router-dom";
 import type { CampusEvent } from "../../types/campus-event";
 import { formatDate } from "../../utils/format-date";
 
-interface EventCardProps {
+interface Props {
   event: CampusEvent;
-  onShowDetail: (id: string) => void;
 }
 
-// Sprint 4'teki renderCard fonksiyonu artık bir bileşen
-function EventCard({ event, onShowDetail }: EventCardProps) {
+function EventCard({ event }: Props) {
   return (
     <article>
       <h3>{event.title}</h3>
@@ -18,15 +17,7 @@ function EventCard({ event, onShowDetail }: EventCardProps) {
       <p>{event.location}</p>
       <p>Kontenjan: {event.capacity}</p>
       <p>
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            onShowDetail(event.id);
-          }}
-        >
-          Detayları gör →
-        </a>
+        <Link to={`/events/${event.id}`}>Detayları gör →</Link>
       </p>
     </article>
   );

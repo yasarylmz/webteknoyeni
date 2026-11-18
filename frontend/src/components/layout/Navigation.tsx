@@ -1,33 +1,23 @@
-import type { PageName } from "../../types/page";
+import { NavLink } from "react-router-dom";
 
-interface NavigationProps {
-  current: PageName;
-  onNavigate: (page: PageName) => void;
-}
-
-const menu: { name: PageName; label: string }[] = [
-  { name: "home", label: "Ana Sayfa" },
-  { name: "events", label: "Etkinlikler" },
-  { name: "add", label: "Ekle" },
+const menu = [
+  { to: "/", label: "Ana Sayfa" },
+  { to: "/events", label: "Etkinlikler" },
+  { to: "/admin", label: "Yönetim" },
+  { to: "/login", label: "Giriş" },
 ];
 
-// Veri aşağı (current), olay yukarı (onNavigate): sayfayı değiştiren yine App
-function Navigation({ current, onNavigate }: NavigationProps) {
+function Navigation() {
   return (
-    <nav aria-label="Ana menü">
+    <nav className="menu" aria-label="Ana menü">
       <ul>
         {menu.map((item) => (
-          <li key={item.name}>
-            <a
-              href="#"
-              aria-current={current === item.name ? "page" : undefined}
-              onClick={(e) => {
-                e.preventDefault();
-                onNavigate(item.name);
-              }}
-            >
+          <li key={item.to}>
+            {/* NavLink açık sayfaya kendisi aria-current="page" ekler.
+                end: "/" sadece ana sayfada aktif olsun */}
+            <NavLink to={item.to} end={item.to === "/"}>
               {item.label}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>
