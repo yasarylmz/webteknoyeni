@@ -1,0 +1,168 @@
+/* Mustafa Yaşar Yılmaz — 2211012729 */
+/* --no ve --font numaraya göre ayarlandı; geri kalan her şey var(--...) ile */
+:root {
+  --no: 2211012729;
+  --ton: mod(var(--no), 360);
+  --renk-ana: hsl(var(--ton) 65% 38%);
+  --renk-zemin: hsl(var(--ton) 30% 97%);
+  --font: "Lucida Console", monospace;
+  --bosluk-m: 1rem;  --kose: 8px;
+
+  /* Türetilen değerler (hepsi yukarıdakilerden hesaplanır) */
+  --renk-acik: hsl(var(--ton) 40% 88%);
+  --renk-kenar: hsl(var(--ton) 20% 85%);
+  --renk-yazi: hsl(var(--ton) 30% 12%);
+  --renk-beyaz: hsl(0 0% 100%);
+  --renk-hata: hsl(0 70% 45%);
+  --renk-hata-zemin: hsl(0 80% 97%);
+  --bosluk-s: calc(var(--bosluk-m) / 2);
+  --bosluk-l: calc(var(--bosluk-m) * 1.5);
+  --golge: 0 1px 3px hsl(var(--ton) 30% 20% / 0.12);
+}
+body { font-family: var(--font); }
+
+/* ---------- Genel ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--renk-zemin);
+  color: var(--renk-yazi);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;          /* uzun kelimeler taşmasın */
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--renk-ana); }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 var(--bosluk-s); }
+
+/* ---------- Başlık ve menü (beş sayfada aynı) ---------- */
+header {
+  background: var(--renk-ana);
+  color: var(--renk-beyaz);
+  padding: var(--bosluk-m);
+}
+header h1 { font-size: 1.35rem; margin: 0 0 var(--bosluk-s); }
+nav ul {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-wrap: wrap;                  /* telefonda alt satıra geçer, sığar */
+  gap: var(--bosluk-s);
+}
+nav a {
+  display: inline-block;
+  min-height: 44px;                 /* parmakla basılabilir */
+  padding: 10px var(--bosluk-s);
+  color: var(--renk-beyaz);
+  text-decoration: none;
+  border-radius: var(--kose);
+}
+nav a:hover, nav a:focus-visible { background: hsl(0 0% 100% / 0.18); }
+nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--bosluk-m);
+}
+
+/* ---------- Kartlar: section > article + grid ---------- */
+.kartlar {
+  display: grid;
+  grid-template-columns: 1fr;       /* telefon: tek sütun */
+  gap: var(--bosluk-m);
+  margin-bottom: var(--bosluk-m);
+}
+.kartlar article {
+  background: var(--renk-beyaz);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+  box-shadow: var(--golge);
+}
+.kartlar h3 { font-size: 1.1rem; }
+.kartlar p { margin: 0 0 4px; }
+.kartlar a, .tumu {
+  display: inline-block;
+  min-height: 44px;
+  padding-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ---------- Detay sayfası ---------- */
+.detay { display: grid; gap: var(--bosluk-m); }
+.detay figure { margin: 0; }
+.afis {
+  background: var(--renk-acik);
+  border-radius: var(--kose);
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+figcaption { font-style: italic; font-size: 0.9rem; margin-top: var(--bosluk-s); }
+.kunye {
+  background: var(--renk-beyaz);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+  padding: var(--bosluk-m);
+  margin: 0 0 var(--bosluk-m);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--bosluk-s) var(--bosluk-m);
+}
+.kunye dt { font-weight: bold; }
+.kunye dd { margin: 0; }
+
+/* ---------- Formlar ---------- */
+form { display: grid; gap: var(--bosluk-s); max-width: 600px; }
+label { display: block; margin-top: var(--bosluk-s); }   /* label üstte */
+input, select, textarea, button { font: inherit; }
+input, select, textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--bosluk-s);
+  border: 1px solid var(--renk-kenar);
+  border-radius: var(--kose);
+  background: var(--renk-beyaz);
+  color: var(--renk-yazi);
+}
+textarea { min-height: 6rem; resize: vertical; }
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--renk-ana);
+  outline-offset: 1px;
+}
+/* Hatalı alan kırmızı: kullanıcı dokunduktan / gönder'e bastıktan sonra */
+input:user-invalid, select:user-invalid, textarea:user-invalid {
+  border-color: var(--renk-hata);
+  background: var(--renk-hata-zemin);
+  color: var(--renk-hata);
+}
+.hata-mesaji { display: none; color: var(--renk-hata); font-size: 0.9rem; }
+:user-invalid + .hata-mesaji { display: block; }
+
+button {
+  justify-self: start;
+  min-height: 44px;
+  margin-top: var(--bosluk-m);
+  padding: var(--bosluk-s) var(--bosluk-l);
+  background: var(--renk-ana);
+  color: var(--renk-beyaz);
+  border: 0;
+  border-radius: var(--kose);
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { filter: brightness(1.1); }
+
+footer { text-align: center; padding: var(--bosluk-m); font-size: 0.9rem; }
+
+/* ---------- Geniş ekran ---------- */
+@media (min-width: 600px) {
+  .kartlar { grid-template-columns: repeat(2, 1fr); }
+  .detay { grid-template-columns: 1fr 1fr; align-items: start; }  /* afiş solda, künye sağda */
+}
+@media (min-width: 900px) {
+  .kartlar.uclu { grid-template-columns: repeat(3, 1fr); }
+}
