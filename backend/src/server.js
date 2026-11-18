@@ -1,0 +1,9 @@
+// İlk satır: .env dosyasını okur, PORT gibi değerler process.env'e gelir
+import "dotenv/config";
+import app from "./app.js";
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`API: http://localhost:${PORT}`);
+});
