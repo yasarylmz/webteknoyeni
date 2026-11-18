@@ -10,8 +10,9 @@ Mustafa Yaşar Yılmaz · 2211012729
 | 2 | `sprint2/` | CSS ve responsive tasarım |
 | 3 | `sprint3/` | JavaScript ve DOM: veriden üretilen kartlar, arama/filtre, `?id=` ile detay, form doğrulama |
 | 4 | `frontend/` | Vite + TypeScript + React: 5 sayfa tek `App.tsx` içinde, sayfa geçişi `useState` ile |
+| 5 | `frontend/` | React bileşenleri: `App.tsx` 9 bileşene bölündü, veri props ile iner, olaylar callback ile çıkar |
 
-Canlı adres artık Sprint 4'ü (`frontend/`) gösterir. Çalıştırmak için: `cd frontend`, `npm install`, `npm run dev`.
+Canlı adres `frontend/` klasörünün son hâlini (şu an Sprint 5) gösterir. Çalıştırmak için: `cd frontend`, `npm install`, `npm run dev`.
 
 ## Sprint 4 · frontend klasöründeki dosyalar
 
@@ -31,3 +32,18 @@ Canlı adres artık Sprint 4'ü (`frontend/`) gösterir. Çalıştırmak için: 
 | `src/types/campus-event.ts` | Bir etkinliğin tipi (`CampusEvent`) ve 4 değerli `Category` union tipi. |
 | `src/data/events.ts` | 6 etkinliğin tipli verisi (`CampusEvent[]`). |
 | `src/utils/filter-events.ts` | Saf fonksiyonlar: `searchEvents`, `filterByCategory`, `findEventById`. |
+
+## Sprint 5 · yeni dosyalar
+
+| Dosya | Görevi |
+|---|---|
+| `src/components/layout/Header.tsx` | Sayfa başlığı; başlığı `title` props'u ile App'ten alır. |
+| `src/components/layout/Navigation.tsx` | Menü; açık sayfayı `current` ile alır, tıklamayı `onNavigate` ile App'e bildirir. |
+| `src/components/layout/Footer.tsx` | Alt bilgi; props almaz. |
+| `src/components/events/EventCard.tsx` | Tek etkinlik kartı; "Detayları gör"e basılınca `onShowDetail(id)` çağırır. |
+| `src/components/events/EventList.tsx` | Etkinlik dizisini kartlara çevirir; dizi boşsa `emptyText` mesajını gösterir. |
+| `src/components/events/EventFilter.tsx` | Arama kutusu ve kategori seçimi; değerler App'teki state'ten gelir. |
+| `src/components/events/EventDetail.tsx` | Seçili etkinliğin afişi, künyesi ve iki butonu (`onBack`, `onEdit`). |
+| `src/components/forms/EventForm.tsx` | Ekle/Güncelle formu; gönderilince `onSubmit` ile App'e haber verir. |
+| `src/types/page.ts` | Sayfa adlarının tipi (`PageName`). |
+| `src/utils/format-date.ts` | "2026-10-12" tarihini "12 Ekim 2026" yapar. |

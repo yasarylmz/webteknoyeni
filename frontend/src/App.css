@@ -173,7 +173,7 @@ pre {
   margin-bottom: var(--bosluk-s);
 }
 .filtre label { margin-top: 0; }
-#sonuc { font-weight: bold; }
+#sonuc, .sonuc { font-weight: bold; }
 
 /* Link görünümlü buton (detaydaki "Bu etkinliği güncelle") */
 .buton {
@@ -245,4 +245,12 @@ footer { text-align: center; padding: var(--bosluk-m); font-size: 0.9rem; }
   width: 100%;
   height: auto;
   border-radius: var(--kose);
+}
+
+/* ---------- Sprint 5: menü artık header'ın dışında (ayrı bileşen), görünüm aynı kalsın ---------- */
+.site-baslik { padding-bottom: 0; }
+.site-baslik h1 { margin-bottom: 0; }
+.site-baslik + nav {
+  background: var(--renk-ana);
+  padding: var(--bosluk-s) var(--bosluk-m) var(--bosluk-m);
 }
