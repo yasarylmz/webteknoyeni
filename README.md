@@ -14,10 +14,13 @@ Mustafa Yaşar Yılmaz · 2211012729
 | 4 | `frontend/` | Vite + TypeScript + React: 5 sayfa tek `App.tsx` içinde, sayfa geçişi `useState` ile |
 | 5 | `frontend/` | React bileşenleri: `App.tsx` 9 bileşene bölündü, veri props ile iner, olaylar callback ile çıkar |
 | 6 + Vize | `frontend/` | React Router (10 adres), EventsContext, yönetim paneli (ekle/güncelle/sil), giriş, kayıt, şifremi unuttum |
+| 7 | `backend/` | Express ile REST API: `/health`, `GET /events`, `GET /events/:id`, `POST /events` (ayrıntı `backend/README.md`) |
 
-Canlı adres `frontend/` klasörünün son hâlini (şu an Sprint 6 + Vize) gösterir.
+Canlı adres `frontend/` klasörünün son hâlini gösterir. `backend/` bu sprintte canlıya alınmaz, bilgisayarda `localhost:3000`'de çalışır.
 
 ## Kurulum
+
+Frontend:
 
 ```
 cd frontend
@@ -26,6 +29,17 @@ npm run dev
 ```
 
 Tarayıcıda `http://localhost:5173` açılır.
+
+Backend (Sprint 7):
+
+```
+cd backend
+npm install
+copy .env.example .env
+npm run dev
+```
+
+API `http://localhost:3000` adresinde açılır.
 
 ## Route listesi
 
