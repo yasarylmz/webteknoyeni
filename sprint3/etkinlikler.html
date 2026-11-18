@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tüm Etkinlikler</title>
+  <link rel="stylesheet" href="css/2211012729.css">
+  <script type="module" src="js/event-list.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Kampüs Etkinlikleri</h1>
+    <nav aria-label="Ana menü">
+      <ul>
+        <li><a href="index.html">Ana Sayfa</a></li>
+        <li><a href="etkinlikler.html" aria-current="page">Etkinlikler</a></li>
+        <li><a href="etkinlik-ekle.html">Ekle</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Tüm Etkinlikler</h2>
+    <form id="filtre-formu" class="filtre" role="search">
+      <div>
+        <label for="arama">Etkinlik ara</label>
+        <input type="search" id="arama" name="arama" placeholder="atölye, kariyer...">
+      </div>
+      <div>
+        <label for="kategori-filtre">Kategori</label>
+        <select id="kategori-filtre" name="kategori-filtre">
+          <option value="">Tümü</option>
+        </select>
+      </div>
+    </form>
+    <p id="sonuc" aria-live="polite"></p>
+    <section id="etkinlik-listesi" class="kartlar uclu"></section>
+  </main>
+  <footer>
+    <p>Kampüs Etkinlikleri · Web Teknolojileri</p>
+  </footer>
+</body>
+</html>
