@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Event } from "../models/event-model.js";
+import { todayStart } from "../utils/date.js";
 
 // Bütün "bulunamadı" yanıtları aynı biçimde
 function notFound(res) {
@@ -29,6 +30,16 @@ export async function getEvents(req, res, next) {
     res.json(events);
   } catch (err) {
     next(err); // hata middleware'ine gider, sunucu çökmez
+  }
+}
+
+// GET /events/upcoming  (bugün ve sonrası, en yakın önce)
+export async function getUpcomingEvents(req, res, next) {
+  try {
+    const events = await Event.find({ date: { $gte: todayStart() } }).sort({ date: 1, time: 1 });
+    res.json(events);
+  } catch (err) {
+    next(err);
   }
 }
 
