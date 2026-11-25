@@ -4,6 +4,7 @@ import {
   getEventById,
   createEvent,
   updateEvent,
+  deleteEvent,
 } from "../controllers/event-controller.js";
 
 // app.js'te "/events" öneki verildi; buradaki "/" aslında /events demek
@@ -13,5 +14,6 @@ router.get("/", getEvents); // GET /events
 router.get("/:id", getEventById); // GET /events/:id
 router.post("/", createEvent); // POST /events
 router.patch("/:id", updateEvent); // PATCH /events/:id
+router.delete("/:id", deleteEvent); // DELETE /events/:id
 
 export default router;
