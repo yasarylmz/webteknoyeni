@@ -16,6 +16,7 @@ Mustafa Yaşar Yılmaz · 2211012729
 | 6 + Vize | `frontend/` | React Router (10 adres), EventsContext, yönetim paneli (ekle/güncelle/sil), giriş, kayıt, şifremi unuttum |
 | 7 | `backend/` | Express ile REST API: `/health`, `GET /events`, `GET /events/:id`, `POST /events` (ayrıntı `backend/README.md`) |
 | 8 | `backend/` | MongoDB + Mongoose: etkinlikler veritabanında kalıcı, `Event` modeli, `npm run seed` |
+| 9 | `backend/` | Tam CRUD: `PATCH` ve `DELETE /events/:id`, `?search` ve `?category`, `GET /events/upcoming`, tarihler GG-AA-YYYY |
 
 Canlı adres `frontend/` klasörünün son hâlini gösterir. `backend/` bu sprintte canlıya alınmaz, bilgisayarda `localhost:3000`'de çalışır.
 
@@ -31,7 +32,7 @@ npm run dev
 
 Tarayıcıda `http://localhost:5173` açılır.
 
-Backend (Sprint 8):
+Backend (Sprint 9):
 
 ```
 cd backend
