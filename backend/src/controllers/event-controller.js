@@ -9,10 +9,22 @@ function notFound(res) {
 // Değiştirilemeyecek alanlar: kimlik ve zaman damgaları
 const READONLY_FIELDS = ["_id", "createdAt", "updatedAt", "__v"];
 
-// GET /events  (?category=Atölye isteğe bağlı)
+// Kullanıcının yazdığı metin regex içinde düz metin olarak aransın: ( . * gibi işaretler kaçırılır
+function escapeRegex(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// GET /events  (?category=Atölye tam eşleşme, ?search=atölye başlıkta arar; ikisi birlikte de olur)
 export async function getEvents(req, res, next) {
   try {
-    const filter = req.query.category ? { category: req.query.category } : {};
+    const { category, search } = req.query;
+    const filter = {};
+    if (typeof category === "string" && category !== "") {
+      filter.category = category;
+    }
+    if (typeof search === "string" && search.trim() !== "") {
+      filter.title = { $regex: escapeRegex(search.trim()), $options: "i" };
+    }
     const events = await Event.find(filter).sort({ date: 1 });
     res.json(events);
   } catch (err) {
