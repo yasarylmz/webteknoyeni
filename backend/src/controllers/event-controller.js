@@ -36,7 +36,7 @@ export async function createEvent(req, res, next) {
     const event = await Event.create(req.body ?? {});
     res.status(201).json(event);
   } catch (err) {
-    if (err.name === "ValidationError") {
+    if (err.name === "ValidationError" || err.name === "CastError") {
       return res.status(400).json({ error: { message: err.message } });
     }
     next(err);

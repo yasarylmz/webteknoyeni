@@ -1,11 +1,12 @@
 // Örnek veri: npm run seed bu 6 etkinliği veritabanına yazar.
 // id alanı yok: MongoDB her kayda kendi _id'sini verir.
+// Tarihler "GG-AA-YYYY". İlk ikisi geçmişte: /events/upcoming listesinde görünmezler.
 export const seedEvents = [
   {
     title: "Mezun Buluşması: Sektörden Notlar",
     category: "Seminer",
     capacity: 150,
-    date: "2026-10-12",
+    date: "12-10-2026",
     time: "14:00",
     location: "Mühendislik Fakültesi Konferans Salonu",
     description: "Yazılım sektöründe çalışan mezunlarımız ilk iş deneyimlerini ve staj tavsiyelerini anlatıyor.",
@@ -14,7 +15,7 @@ export const seedEvents = [
     title: "Raspberry Pi ile Akıllı Sera",
     category: "Atölye",
     capacity: 24,
-    date: "2026-10-20",
+    date: "20-10-2026",
     time: "10:00",
     location: "Elektronik Laboratuvarı 3",
     description: "Sıcaklık ve nem sensörleriyle küçük bir sera modelini otomatik sulamaya bağlıyoruz.",
@@ -23,7 +24,7 @@ export const seedEvents = [
     title: "Kimlik Avı Saldırılarını Tanımak",
     category: "Söyleşi",
     capacity: 90,
-    date: "2026-10-27",
+    date: "03-12-2026",
     time: "15:30",
     location: "C Blok Amfi 2",
     description: "Sahte e-posta ve sitelerin nasıl ayırt edileceğini gerçek örnekler üzerinden konuşuyoruz.",
@@ -32,7 +33,7 @@ export const seedEvents = [
     title: "Üretken Yapay Zekâ ve Telif Hakkı",
     category: "Seminer",
     capacity: 110,
-    date: "2026-11-05",
+    date: "14-01-2027",
     time: "13:00",
     location: "Hukuk Fakültesi Toplantı Salonu",
     description: "Yapay zekâ ile üretilen görsel ve metinlerin kime ait olduğu sorusunu hukukçularla tartışıyoruz.",
@@ -41,7 +42,7 @@ export const seedEvents = [
     title: "Figma'dan Koda: Arayüz Atölyesi",
     category: "Atölye",
     capacity: 30,
-    date: "2026-11-18",
+    date: "11-02-2027",
     time: "11:00",
     location: "Bilgisayar Laboratuvarı 1",
     description: "Figma'da tasarlanan bir giriş ekranını HTML ve CSS ile adım adım koda döküyoruz.",
@@ -50,7 +51,7 @@ export const seedEvents = [
     title: "48 Saatte Mobil Uygulama Yarışması",
     category: "Yarışma",
     capacity: 60,
-    date: "2026-12-02",
+    date: "18-03-2027",
     time: "09:00",
     location: "Merkez Kütüphane Etkinlik Alanı",
     description: "Üç kişilik takımlar kampüs yaşamını kolaylaştıran bir mobil uygulama fikrini 48 saatte hayata geçiriyor.",
